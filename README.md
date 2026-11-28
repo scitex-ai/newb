@@ -279,7 +279,7 @@ newb dev set-secret <owner>/<repo>         # push NEWB_ANTHROPIC_API_KEY to GH
 newb dev scaffold-workflow <owner>/<repo>  # drop .github/workflows/newb.yml
 
 # Shell completion
-newb install-shell-completion              # bash / zsh / fish (auto-detected)
+newb install-shell-completion --yes        # drop-in file; never edits ~/.bashrc
 newb print-shell-completion bash           # emit script to stdout
 newb skills install                        # copy skill leaves into ~/.claude/skills/
 ```

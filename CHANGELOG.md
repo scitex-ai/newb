@@ -4,6 +4,20 @@ All notable changes to newb. Format loosely follows [Keep a Changelog](https://k
 versions follow [SemVer](https://semver.org/) with the pre-1.0 caveat
 that minor bumps may break.
 
+## [Unreleased]
+
+### Fixed
+
+- **`newb install-shell-completion` no longer appends to `~/.bashrc` / `~/.zshrc`**
+  (scitex-dev#1127). It writes one drop-in file per console script (`newb`,
+  `scitex-newb`) where the shell's completion framework looks
+  (`${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-~/.local/share}/bash-completion}/completions/`,
+  zsh `site-functions/_<prog>`, fish `completions/<prog>.fish`), generates the script
+  in-process instead of running `newb` from `PATH`, is idempotent and atomic, and refuses
+  to write into a git work tree. A leftover rc line from an older install is reported,
+  never edited. `--rc-path` is removed (hidden; passing it exits 1 with an explanation
+  and writes nothing).
+
 ## [0.26.6] — 2026-05-08
 
 ### Changed
